@@ -1,6 +1,7 @@
 
 import serial
 import sys
+import glob
 
 wave_forms = ['sine', 'triangle', 'square', 'saw']
 def sendStartPacket(values):
