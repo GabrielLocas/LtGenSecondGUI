@@ -12,6 +12,7 @@ def checkIfInRange(value, min, max):
 
 running = False
 image_path = 'falloutGuyRescaled.png'
+app_image_path = 'falloutComputerTrimmed.ico'
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -40,7 +41,7 @@ if __name__ == '__main__':
     sg.theme('Fallout 3 Terminal')
     sg.set_options(font=('Courier New', 14))
     # Create the window
-    window = sg.Window("LightCore Tone Generator", layout)
+    window = sg.Window("LightCore Tone Generator", layout, icon=app_image_path)
 
 
     def timer_thread(values):
