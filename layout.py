@@ -74,7 +74,7 @@ def is_valid_stim_freq(value):
 def is_valid_pitch(value):
     try:
         int_value = int(value)
-        if 10000 <= int_value <= 65535:
+        if 1000 <= int_value <= 65535:
             return True
     except ValueError:
         pass
