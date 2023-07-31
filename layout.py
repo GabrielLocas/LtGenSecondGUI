@@ -13,28 +13,30 @@ fallout_3_terminal_theme = {
     'BORDER': 1, 'SLIDER_DEPTH': 0, 'PROGRESS_DEPTH': 0,
 }
 
+image_path = 'falloutGuyRescaled.png'
+
 sg.theme_add_new('Fallout 3 Terminal', fallout_3_terminal_theme)
 sg.theme('Fallout 3 Terminal')
 sg.set_options(font=('Courier New', 14))
 
 # Setup configuration of display
 control_column = [
-
-    [sg.Combo(values=serial_ports(), key='-PORT-', size=(10,1))],
-
-    [sg.Button("Start")],
-
-    [sg.Button("Stop")],
-
-    [sg.Checkbox("Random", key='-RANDOM-')]
+    [
+        sg.Column([[sg.Combo(values=serial_ports(), key='-PORT-', size=(10,1))],
+            [sg.Button("Start")],
+            [sg.Button("Stop")],
+            [sg.Checkbox("Random", key='-RANDOM-')]], expand_x=True, justification='left'),
+        sg.Column([[sg.Image(filename=image_path)]], justification='right')
+    ]
 ]
 
 stimulation_column = [
     [
-        sg.Column([[sg.Text("Stimulation time (s)")], [sg.Text("Rest time (s)")], [sg.Text("Repetitions")]]),
+        sg.Column([[sg.Text("Stimulation time (s)")], [sg.Text("Rest time (s)")], [sg.Text("Repetitions")]],
+                  expand_x=True, justification='left'),
         sg.Column([[sg.Input(key='-STIM_TIME-', default_text='5',  size=(10,1))],
             [sg.InputText(key='-REST_TIME-', default_text='5',  size=(10,1))],
-            [sg.InputText(key='-REPETITIONS-', default_text='1',  size=(10,1))]])
+            [sg.InputText(key='-REPETITIONS-', default_text='1',  size=(10,1))]], justification='right')
     ]
 ]
 
@@ -42,19 +44,21 @@ wave_forms = ['sine', 'triangle', 'square', 'saw']
 
 sound_column = [
     [
-        sg.Column([[sg.Text("Wave type : ")], [sg.Text("Pitch (Hz) : ")], [sg.Text("Volume Intensity (%) : ")]]),
+        sg.Column([[sg.Text("Wave type : ")], [sg.Text("Pitch (Hz) : ")], [sg.Text("Volume Intensity (%) : ")]],
+                  expand_x=True, justification='left'),
         sg.Column([[sg.Combo(values=wave_forms, key='-WAVE_FORM-')],
             [sg.InputText(key='-PITCH-', default_text='10000',  size=(10,1))],
-            [sg.InputText(key='-VOLUME-', default_text='50', size=(10, 1))]])
+            [sg.InputText(key='-VOLUME-', default_text='50', size=(10, 1))]], justification='right')
     ]
 ]
 
 light_column = [
     [
-        sg.Column([[sg.Text("Stimulation frequency (Hz)")], [sg.Text("Duty cycle (%)")], [sg.Text("Light Intensity (%)")]]),
+        sg.Column([[sg.Text("Stimulation frequency (Hz)")], [sg.Text("Duty cycle (%)")], [sg.Text("Light Intensity (%)")]],
+                  expand_x=True, justification='left'),
         sg.Column([[sg.InputText(key='-STIM_FREQ-', default_text='20',  size=(10,1))],
             [sg.InputText(key='-DUTY_CYCLE-', default_text='50',  size=(10,1))],
-            [sg.InputText(key='-LIGHT-', default_text='100',  size=(10,1))]])
+            [sg.InputText(key='-LIGHT-', default_text='100',  size=(10,1))]], justification='right')
     ]
 ]
 

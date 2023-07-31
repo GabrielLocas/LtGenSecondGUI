@@ -15,8 +15,15 @@ image_path = 'falloutGuyRescaled.png'
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    layout = [[sg.Column([[sg.Column(control_column), sg.Column(stimulation_column)]]), sg.Column([[sg.Column(sound_column),
-               sg.Column(light_column)]]), sg.Image(filename=image_path)]]
+    layout = [
+        [control_column],
+        [sg.HorizontalSeparator()],
+        [stimulation_column],
+        [sg.HorizontalSeparator()],
+        [sound_column],
+        [sg.HorizontalSeparator()],
+        [light_column]
+    ]
 
     fallout_3_terminal_theme = {
         'BACKGROUND': '#000000',
