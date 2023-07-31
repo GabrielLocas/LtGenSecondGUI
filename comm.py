@@ -17,12 +17,12 @@ def sendStartPacket(values):
     packet_list = [wave_type, pitch_1, pitch_2, stim_freq, duty_cycle, random, sound_intensity, light_intensity]
     packet = bytearray(packet_list)
     ser = serial.Serial(values['-PORT-'], 115200)
-    #ser.write(packet)
+    ser.write(packet)
     print(packet)
     return
 def sendStopPacket(values):
     ser = serial.Serial(values['-PORT-'], 115200)
-    #ser.write(bytearray([0x01,0x00,0x10,0x10,0,0,0,0]))
+    ser.write(bytearray([0x01,0x00,0x10,0x10,0,0,0,0]))
     return
 
 def serial_ports():
