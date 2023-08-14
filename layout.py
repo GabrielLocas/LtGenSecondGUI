@@ -119,7 +119,7 @@ def is_valid_repetitions(value):
 def is_valid_volume(value):
     try:
         int_value = int(value)
-        if 1 <= int_value <= 100:
+        if 0 <= int_value <= 100:
             return True
     except ValueError:
         pass
@@ -128,7 +128,7 @@ def is_valid_volume(value):
 def is_valid_light(value):
     try:
         int_value = int(value)
-        if 1 <= int_value <= 100:
+        if 0 <= int_value <= 100:
             return True
     except ValueError:
         pass
@@ -147,10 +147,10 @@ def check_values(values):
         error_string += ('Repetitions : (1 to 100) \n')
         chill = False
     if not is_valid_pitch(values['-PITCH-']):
-        error_string += ('Pitch : (10000 to 65335) \n')
+        error_string += ('Pitch : (1000 to 65335) \n')
         chill = False
     if not is_valid_volume(values['-VOLUME-']):
-        error_string += ('Volume intensity : (1 to 100) \n')
+        error_string += ('Volume intensity : (0 to 100) \n')
         chill = False
     if not is_valid_stim_freq(values['-STIM_FREQ-']):
         error_string += ('Stimulation frequency : (1 to 255) \n')
@@ -159,7 +159,7 @@ def check_values(values):
         error_string += ('Duty cycle : (1 to 100) \n')
         chill = False
     if not is_valid_light(values['-LIGHT-']):
-        error_string += ('Light intensity : (1 to 100) \n')
+        error_string += ('Light intensity : (0 to 100) \n')
         chill = False
     if not chill:
         sg.Popup(error_string)
