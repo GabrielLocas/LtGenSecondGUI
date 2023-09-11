@@ -74,7 +74,7 @@ def is_valid_stim_freq(value):
 def is_valid_pitch(value):
     try:
         int_value = int(value)
-        if 1000 <= int_value <= 65535:
+        if 100 <= int_value <= 65535:
             return True
     except ValueError:
         pass
@@ -147,7 +147,7 @@ def check_values(values):
         error_string += ('Repetitions : (1 to 100) \n')
         chill = False
     if not is_valid_pitch(values['-PITCH-']):
-        error_string += ('Pitch : (1000 to 65335) \n')
+        error_string += ('Pitch : (100 to 65335) \n')
         chill = False
     if not is_valid_volume(values['-VOLUME-']):
         error_string += ('Volume intensity : (0 to 100) \n')
