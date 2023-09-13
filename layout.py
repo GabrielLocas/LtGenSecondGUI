@@ -46,7 +46,7 @@ sound_column = [
     [
         sg.Column([[sg.Text("Wave type : ")], [sg.Text("Pitch (Hz) : ")], [sg.Text("Volume Intensity (%) : ")]],
                   expand_x=True, justification='left'),
-        sg.Column([[sg.Combo(values=wave_forms, key='-WAVE_FORM-')],
+        sg.Column([[sg.Combo(values=wave_forms, key='-WAVE_FORM-', default_value= 'sine')],
             [sg.InputText(key='-PITCH-', default_text='10000',  size=(10,1))],
             [sg.InputText(key='-VOLUME-', default_text='50', size=(10, 1))]], justification='right')
     ]
@@ -74,7 +74,7 @@ def is_valid_stim_freq(value):
 def is_valid_pitch(value):
     try:
         int_value = int(value)
-        if 100 <= int_value <= 65535:
+        if 1000 <= int_value <= 65535:
             return True
     except ValueError:
         pass
@@ -147,7 +147,7 @@ def check_values(values):
         error_string += ('Repetitions : (1 to 100) \n')
         chill = False
     if not is_valid_pitch(values['-PITCH-']):
-        error_string += ('Pitch : (100 to 65335) \n')
+        error_string += ('Pitch : (1000 to 65335) \n')
         chill = False
     if not is_valid_volume(values['-VOLUME-']):
         error_string += ('Volume intensity : (0 to 100) \n')
