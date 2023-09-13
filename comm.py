@@ -10,7 +10,7 @@ def sendStartPacket(values):
     pitch_1 = (pitch & 0xFF00) >> 8
     pitch_2 = pitch & 0x00FF
     stim_freq = int(values['-STIM_FREQ-'])
-    duty_cycle = int(values['-DUTY_CYCLE-']) * 2.55
+    duty_cycle = int(int(values['-DUTY_CYCLE-']) * 2.55)
     random = int(values['-RANDOM-'])
     sound_intensity = int(values['-VOLUME-'])
     light_intensity = int(values['-LIGHT-'])
